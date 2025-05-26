@@ -1,0 +1,88 @@
+body {
+    background-color: #0f111a;
+    color: #33ff33;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0; padding: 0;
+}
+
+header {
+    background: #111a1f;
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 2px solid #33ff33;
+}
+
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+}
+
+nav a {
+    color: #33ff33;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 2rem;
+    max-width: 600px;
+    margin: auto;
+    background: #141b22;
+    border: 2px solid #33ff33;
+    border-radius: 10px;
+}
+
+input {
+    width: 80%;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    border: 2px solid #33ff33;
+    background: #0f111a;
+    color: #33ff33;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background: #33ff33;
+    border: none;
+    color: #0f111a;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #28cc28;
+}
+
+.message {
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.7rem 1.5rem;
+    background: #33ff33;
+    color: #0f111a;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: #28cc28;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    color: #0a570a;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
