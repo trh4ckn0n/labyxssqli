@@ -86,3 +86,13 @@ footer {
     font-size: 0.9rem;
     margin-top: 2rem;
 }
+
+    .btn-next {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #0f0;
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+    }
