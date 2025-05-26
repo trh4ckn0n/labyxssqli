@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Anonymous Lab - Stage {{ stage }}</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <header>
+        <h1>Anonymous Labyrinth</h1>
+        <nav>
+            <a href="/">Accueil</a> |
+            <a href="/stage/1">Stage 1</a> |
+            <a href="/stage/2">Stage 2</a> |
+            <a href="/stage/3">Stage 3</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>© 2025 trhacknon - Stay Anonymous</p>
+    </footer>
+</body>
+</html>
