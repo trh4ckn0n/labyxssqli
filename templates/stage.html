@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Stage {{ stage }}</h2>
+
+    {% if stage == 1 %}
+        <p>Challenge XSS : Injectez un script pour afficher une alerte.</p>
+        <form method="POST">
+            <input name="input" placeholder="Tapez quelque chose..." />
+            <button type="submit">Valider</button>
+        </form>
+    {% elif stage == 2 %}
+        <p>Challenge SQLi : Entrez un nom d'utilisateur pour vous connecter.</p>
+        <form method="POST">
+            <input name="username" placeholder="Nom d'utilisateur" />
+            <button type="submit">Se connecter</button>
+        </form>
+    {% else %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    {% if message %}
+        <p class="message">{{ message }}</p>
+    {% endif %}
+
+    {% if success %}
+        <a class="btn" href="/next/{{ stage }}">Étape suivante</a>
+    {% endif %}
+{% endblock %}
