@@ -4,41 +4,43 @@
 <h1>Stage {{ stage }}</h1>
 
 {% if stage == 1 %}
-<p>Injecte du XSS basique (test: &lt;script&gt;alert(1)&lt;/script&gt;).</p>
-<form method="POST">
-    <input type="text" name="input" placeholder="Tape ici ton payload XSS" value="{{ user_input|safe }}">
-    <button type="submit">Valider</button>
-</form>
-<p>{{ message }}</p>
-{% if user_input %}
-<div style="border:1px dashed lime;margin-top:20px;padding:10px;">
-    <strong>Résultat :</strong> {{ user_input|safe }}
-</div>
-{% endif %}
+    <p>Injecte du XSS basique (test : &lt;script&gt;alert(1)&lt;/script&gt;).</p>
+    <form method="POST">
+        <input type="text" name="input" placeholder="Tape ici ton payload XSS" value="{{ request.form.get('input', '') }}">
+        <button type="submit">Valider</button>
+    </form>
+    <p>{{ message }}</p>
+    {% if request.form.get('input') %}
+        <div style="border:1px dashed lime;margin-top:20px;padding:10px;">
+            <strong>Résultat :</strong> {{ request.form.get('input')|safe }}
+        </div>
+    {% endif %}
 
 {% elif stage == 2 %}
-<p>Challenge SQLi : Entrez un nom d'utilisateur pour vous connecter.</p>
-<form method="POST">
-    <input type="text" name="username" placeholder="admin'--">
-    <button type="submit">Se connecter</button>
-</form>
-<p>{{ message }}</p>
+    <p>Challenge SQLi : Entrez un nom d'utilisateur pour vous connecter.</p>
+    <form method="POST">
+        <input type="text" name="username" placeholder="admin'--">
+        <button type="submit">Se connecter</button>
+    </form>
+    <p>{{ message }}</p>
 
 {% elif stage == 3 %}
-<p>Challenge XSS Avancé : injecte ton propre payload à base de confirm() + SVG.</p>
-<form method="POST">
-    <input type="text" name="input" placeholder="Ton payload XSS avancé" value="{{ user_input|safe }}">
-    <button type="submit">Soumettre</button>
-</form>
-<p>{{ message }}</p>
-{% if user_input %}
-<div style="border:1px dashed lime;margin-top:20px;padding:10px;">
-    <strong>Résultat :</strong> {{ user_input|safe }}
-</div>
-{% endif %}
+    <h2>Challenge XSS avancé</h2>
+    <p>Pour réussir ce défi, exploite la faille XSS réelle sur <code>ktmaddict.fr</code> et entre ici l'URL ou payload que tu as utilisé.</p>
+    <form method="POST">
+        <input type="text" name="payload" placeholder="Colle ici ton URL XSS ou payload" style="width: 100%;">
+        <button type="submit">Valider</button>
+    </form>
+    <p>{{ message }}</p>
+    {% if request.form.get('payload') %}
+        <div style="border:1px dashed lime;margin-top:20px;padding:10px;">
+            <strong>Payload soumis :</strong><br>
+            {{ request.form.get('payload') }}
+        </div>
+    {% endif %}
 {% endif %}
 
 {% if success %}
-<a href="{{ url_for('next_stage', current_stage=stage) }}" class="btn-next">Étape suivante</a>
+    <a href="{{ url_for('next_stage', current_stage=stage) }}" class="btn-next">Étape suivante</a>
 {% endif %}
 {% endblock %}
