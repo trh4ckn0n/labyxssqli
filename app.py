@@ -62,16 +62,17 @@ def stage(stage):
 
         return render_template('stage.html', stage=stage, message=message, success=success)
 
-    if stage == 3:
-        if request.method == 'POST':
-            user_input = request.form.get('input', '')
-            if 'svg/onload' in user_input and 'confirm(' in user_input and 'document.cookie' in user_input:
-                success = True
-                message = "Challenge XSS avancé validé !"
-            else:
-                message = "Essaie une injection XSS avancée avec confirm() + svg."
+# Stage 3: Realistic XSS challenge
+if stage == 3:
+    if request.method == 'POST':
+        user_payload = request.form.get('payload', '')
+        if "ktmaddict.fr" in user_payload and ("<svg" in user_payload or "XSS_BY" in user_payload or "trhacknon" in user_payload.lower()):
+            success = True
+            message = "Mission accomplie ! Tu as bien exploité la cible réelle. Bravo !"
+        else:
+            message = "Le lien ou le payload ne semble pas correct. Essaie encore."
 
-        return render_template('stage.html', stage=stage, message=message, success=success, user_input=user_input)
+    return render_template('stage.html', stage=stage, message=message, success=success)
 
 @app.route('/next/<int:current_stage>')
 def next_stage(current_stage):
